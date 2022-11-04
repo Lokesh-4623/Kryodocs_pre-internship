@@ -1,0 +1,5 @@
+kite monkey donkey
+lion monkey donkey kite
+lion lion
+kite kite cat bat
+bat
