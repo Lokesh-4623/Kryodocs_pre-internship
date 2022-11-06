@@ -5,12 +5,37 @@
         <link rel="stylesheet" href="cal2.css">
     </head>
     <body>
+        
         <h1>CALCULATOR</h1>
         <form name="check">
-            Enter an expression:<input class="b" type="text" name="exp"><br><br>
-            Result:<input class="b" type="text" name="res"><br><br>
-            <input type="button" value="submit" onclick="return check.res.value=eval(check.exp.value)" style="height:40px">
-            <input type="reset" value="clear" style="height:40px">
+            <input id="b" type="text" name="exp" size="20"><br>
+            <input class="but" type="button" value="1" OnClick="check.exp.value+='1'"> 
+            <input class="but" type="button" value="2" OnClick="check.exp.value+='2'"> 
+            <input class="but" type="button" value="3" OnClick="check.exp.value+='3'"> 
+            <input class="but" type="button" value="+" OnClick="check.exp.value+='+'"> 
+            <br>
+            
+            <input class="but" type="button" value="4" OnClick="check.exp.value+='4'"> 
+            <input class="but" type="button" value="5" OnClick="check.exp.value+='5'"> 
+            <input class="but" type="button" value="6" OnClick="check.exp.value+='6'"> 
+            <input class="but" type="button" value="-" OnClick="check.exp.value+='-'">
+            <br>
+            
+            <input class="but" type="button" value="7" OnClick="check.exp.value+='7'"> 
+            <input class="but" type="button" value="8" OnClick="check.exp.value+='8'"> 
+            <input class="but" type="button" value="9" OnClick="check.exp.value+='9'"> 
+            <input class="but" type="button" value="*" OnClick="check.exp.value+='*'">
+            <br>
+            
+            <input class="but" type="button" value="=" OnClick="check.exp.value= eval(check.exp.value)">
+            <input class="but" type="button" value="0" OnClick="check.exp.value+='0'"> 
+            <input class="but" type="button" value="." OnClick="check.exp.value+='.'"> 
+            <input class="but" type="button" value="/" OnClick="check.exp.value+='/'">
+            <br>
+    
+            <input id="sub" type="reset" value="Clear" OnClick="check.exp.value=''"> 
+            <input class="but" type="button" value="(" onclick="check.exp.value+='('">
+            <input class="but" type="button" value=")" onclick="check.exp.value+=')'"> 
         </form>
     </body>
 </html>
