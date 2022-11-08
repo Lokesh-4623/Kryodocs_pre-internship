@@ -1,4 +1,4 @@
-
+expression=input("ENTER AN EXPRESSION:")
 
 def prec(c):
   if(c=='*' or c=='/'):
@@ -7,41 +7,50 @@ def prec(c):
      return 1  
   else:
      return -1
-def evaluate(expression):
-  stack=[] 
-  res=""
-  stack.append('0')
-  for i in expression:
-     if(i.isnumeric()):
-        res=res+i 
-     elif(i=='('):
-           stack.append(i)
-     elif(i==')'):
+
+stack=[]
+res=[]
+r=0
+i=0
+stack.append('~')
+while i<len(expression):
+     if(expression[i].isnumeric()): 
+       while((i<len(expression))and(expression[i].isnumeric())):
+         r=int(expression[i])+r*10
+         i=i+1
+       res.append(r)
+       r=0
+       if(i==len(expression)):
+           break
+     if(expression[i]=='('):
+           stack.append(expression[i])
+     elif(expression[i]==')'):
             c=stack.pop()
             while(c!='('):
-                res=res+c
+                res.append(c)
                 c=stack.pop()  
      else: 
           c=stack.pop()
-          while((c!='0' and (prec(i)<=prec(c)))):
-              res=res+c
+          while((c!='~' and (prec(expression[i])<=prec(c)))):
+              res.append(c)
               c=stack.pop()  
           stack.append(c)     
-          stack.append(i)
-
-  c=stack.pop()                  
-  while(c!='0'):
-    res=res+c
+          stack.append(expression[i])
+     i=i+1
+c=stack.pop()                  
+while(c!='~'):
+    res.append(c)
     c=stack.pop()
-  #print(res)
+#print(res)    
 
-  stack1=[]
-  for i in res:
-   if i.isnumeric():
+stack1=[]
+symbol=['+','-','*','/']
+for i in res:
+   if(not(i in symbol)):
      stack1.append(i)
    else:
-     val1=int(stack1.pop())
-     val2=int(stack1.pop())
+     val1=stack1.pop()
+     val2=stack1.pop()
      if i=='+':
          stack1.append(val2+val1)
      elif i=='-':
@@ -50,7 +59,4 @@ def evaluate(expression):
          stack1.append(val2*val1)
      elif i=='/':
           stack1.append(val2/val1)
-  return stack1.pop()
-
-expression=input("enter an expression:")
-print(evaluate(expression))
+print("THE RESULT IS:",stack1.pop()) 
